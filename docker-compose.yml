@@ -1,0 +1,38 @@
+version: '2'
+
+volumes:
+  caddy_data:
+  caddy_config:
+  web_data:
+
+services:
+  xray:
+    image: teddysun/xray
+    restart: always
+    volumes:
+      - ./config.json:/etc/xray/config.json
+
+
+  caddy:
+    image: caddy
+    restart: always
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - web
+      - xray
+    links:
+      - web:web
+      - xray:xray
+    ports:
+      - 80:80
+      - 443:443
+
+
+  web:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html

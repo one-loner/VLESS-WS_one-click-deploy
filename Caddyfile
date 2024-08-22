@@ -1,0 +1,7 @@
+domain_name  {
+  handle_path /topsecretpath {
+        reverse_proxy http://xray:5000
+  }
+  reverse_proxy  web:80 {
+  }
+}
