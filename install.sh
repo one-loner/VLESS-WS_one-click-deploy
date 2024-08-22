@@ -30,4 +30,4 @@ echo ''
 echo ''
 echo ''
 echo $link > link.txt
-echo 'Link saved in file links.txt'
+echo 'Link saved in file link.txt'
