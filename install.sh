@@ -21,7 +21,7 @@ sleep 5
 docker-compose up -d
 docker ps
 
-link='vless://'$uuuid'@'$dn':443?security=tls&fp=chrome&type=ws&path=/topsecretpath&encryption=none#WS'
+link='vless://'$uuuid'@'$1':443?security=tls&fp=chrome&type=ws&path=/topsecretpath&encryption=none#WS'
 
 echo "Client link and QR-code: "
 echo $link
